@@ -6,13 +6,12 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 
-# Lista colores disponibles
+# list of available colors
 colors = ["blue", "green", "yellow", "purple", "orange"]
 
-#Funcion para obtener colores aleatorios
-def get_random_color(exclude_color=None):
-    available_colors = [color for color in colors if color != exclude_color]
-    return choice(available_colors)
+# define snake colors and food
+snake_color = choice(colors)
+food_color = choice([color for color in colors if color != snake_color])
 
 def change(x, y):
     "Change snake direction."
@@ -43,9 +42,6 @@ def move():
         snake.pop(0)
 
     clear()
-
-    snake_color =  get_random_color()
-    food_color = get_random_color (exclude_color=snake_color)
 
     for body in snake:
         square(body.x, body.y, 9, snake_color)
