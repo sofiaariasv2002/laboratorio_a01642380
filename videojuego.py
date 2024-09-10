@@ -23,19 +23,19 @@ def square(start, end):
 
 def circle(start, end):
     import math    
+
     "Draw circle from start to end."
     up()
-    goto(start.x, start.y)
+    goto(start.x,start.y)
     down()
     begin_fill()
 
     for count in range(360):
      fd(math.sin(math.radians(1))*(math.sqrt((end.x - start.x)**2+(end.y - start.y)**2)))
      lt(1)
-     speed(10)
 
     end_fill()
-    pass  # TODO
+   # pass  # TODO
 
 def rectangle(start, end):
     "Draw rectangle from start to end."
