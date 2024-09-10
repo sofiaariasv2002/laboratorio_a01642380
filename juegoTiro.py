@@ -57,6 +57,10 @@ def move():
 	# Mueve los objetivos hacia la izquierda
     for target in targets:
         target.x -= 0.5
+		# Si un objetivo sale de la pantalla, reposiciónalo en el lado derecho
+        if target.x < -200:
+            target.x = 200
+            target.y = randrange(-150, 150)
 
 	 # Mueve la pelota si está dentro del área visible
     if inside(ball):
@@ -76,7 +80,9 @@ def move():
 	# Verifica si cada objetivo está dentro de la pantalla. Si algún objetivo no está dentro, la función retorna y detiene la ejecución
     for target in targets:
         if not inside(target):
-            return
+            # Reposiciona el objetivo en el lado derecho si sale de la pantalla
+            target.x = 200
+            target.y = randrange(-150, 150)
 
     ontimer(move, 50) # 
 
