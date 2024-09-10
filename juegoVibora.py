@@ -6,10 +6,14 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 move_count = 0
 speed = 80
 >>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
+=======
+move_count = 0
+>>>>>>> 258d83b (Increase food speed)
 
 # list of available colors
 colors = ["blue", "green", "yellow", "purple", "orange"]
@@ -30,10 +34,14 @@ def inside(head):
 def move():
     "Move snake forward one segment."
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     global move_count
     global speed
 >>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
+=======
+    global move_count
+>>>>>>> 258d83b (Increase food speed)
     head = snake[-1].copy()
     head.move(aim)
 
@@ -59,7 +67,10 @@ def move():
     clear()
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 258d83b (Increase food speed)
     move_count += 1
     if move_count % 5 == 0: 
        direction = [vector(10,0),vector(-10,0),vector(0,10),vector(-10,0)]
@@ -70,7 +81,10 @@ def move():
        if inside(new_pos):
           food.move(move_direction)
 
+<<<<<<< HEAD
 >>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
+=======
+>>>>>>> 258d83b (Increase food speed)
     for body in snake:
         square(body.x, body.y, 9, snake_color)
 
