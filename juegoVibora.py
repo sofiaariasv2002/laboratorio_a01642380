@@ -6,6 +6,7 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 move_count = 0
+speed = 80
 
 # list of available colors
 colors = ["blue", "green", "yellow", "purple", "orange"]
@@ -26,6 +27,7 @@ def inside(head):
 def move():
     "Move snake forward one segment."
     global move_count
+    global speed
     head = snake[-1].copy()
     head.move(aim)
 
@@ -39,7 +41,8 @@ def move():
     if head == food:
         print('Snake:', len(snake))
         food.x = randrange(-15, 15) * 10
-        food.y = randrange(-15, 15) * 10
+        food.y = randrange(-15, 15) * 10         
+        speed = max(30, speed - 5)
     else:
         snake.pop(0)
 
@@ -60,7 +63,7 @@ def move():
 
     square(food.x, food.y, 9, food_color)
     update()
-    ontimer(move, 100)
+    ontimer(move, speed)
 
 setup(420, 420, 370, 0)
 hideturtle()
