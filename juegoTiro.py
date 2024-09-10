@@ -22,6 +22,17 @@ def draw():
     "Draw ball and targets."
     clear()
 
+	# Dibuja el marco alrededor de la pantalla
+    penup()
+    goto(-210, 210)  # Posición de la esquina superior izquierda del marco
+    pendown()
+    color('black')
+    width(3)  # Ancho de la línea del marco
+    for _ in range(4):
+        forward(420)  # Dibuja una línea de 420 píxeles
+        right(90)  # Gira 90 grados
+    penup()
+
     for target in targets:
         goto(target.x, target.y)
         dot(20, 'blue')
