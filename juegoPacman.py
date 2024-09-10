@@ -7,11 +7,12 @@ path = Turtle(visible=False)
 writer = Turtle(visible=False)
 aim = vector(5, 0)
 pacman = vector(-40, -80)
+# Define la velocidad de los fantasmas en unidades por actualización
 ghosts = [
-    [vector(-180, 160), vector(5, 0)],
-    [vector(-180, -160), vector(0, 5)],
-    [vector(100, 160), vector(0, -5)],
-    [vector(100, -160), vector(-5, 0)],
+    [vector(-180, 160), vector(10, 0)], 	#mueve x unidades en x
+    [vector(-180, -160), vector(0, 10)], #mueve x unidades en y
+    [vector(100, 160), vector(0, -10)],	#mueve x unidades en -x
+    [vector(100, -160), vector(-10, 0)],	#mueve x unidades en -y
 ]
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -115,11 +116,12 @@ def move():
         if valid(point + course):
             point.move(course)
         else:
+	#if next position in not valid move to other random side at the same speed
             options = [
-                vector(5, 0),
-                vector(-5, 0),
-                vector(0, 5),
-                vector(0, -5),
+                vector(10, 0),
+                vector(-10, 0),
+                vector(0, 10),
+                vector(0, -10),
             ]
             plan = choice(options)
             course.x = plan.x
