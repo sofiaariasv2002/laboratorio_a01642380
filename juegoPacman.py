@@ -123,10 +123,23 @@ def move():
                 vector(0, 10),
                 vector(0, -10),
             ]
-            plan = choice(options)
-            course.x = plan.x
-            course.y = plan.y
+          
+        #Calculate the best move based on the shortest distance to pacman
+            best_move = None
+            min_dist = float ('inf')
+ 
+            for option in options:
+                new_point = point + option
+                if valid(new_point):
+                   distance = abs(pacman - new_point)
+                   if distance < min_dist:
+                      min_dist = distance
+                      best_move = option
 
+            if best_move:
+               course.x = best_move.x
+               course.y = best_move.y
+ 
         up()
         goto(point.x + 10, point.y + 10)
         dot(20, 'red')
