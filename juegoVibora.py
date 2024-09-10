@@ -5,6 +5,7 @@ from freegames import square, vector
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+move_count = 0
 
 # list of available colors
 colors = ["blue", "green", "yellow", "purple", "orange"]
@@ -24,6 +25,7 @@ def inside(head):
 
 def move():
     "Move snake forward one segment."
+    global move_count
     head = snake[-1].copy()
     head.move(aim)
 
@@ -42,6 +44,16 @@ def move():
         snake.pop(0)
 
     clear()
+
+    move_count += 1
+    if move_count % 5 == 0: 
+       direction = [vector(10,0),vector(-10,0),vector(0,10),vector(-10,0)]
+       move_direction = choice(direction)
+
+       new_pos = food + move_direction
+
+       if inside(new_pos):
+          food.move(move_direction)
 
     for body in snake:
         square(body.x, body.y, 9, snake_color)
