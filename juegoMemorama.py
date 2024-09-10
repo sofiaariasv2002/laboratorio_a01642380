@@ -3,8 +3,9 @@ from turtle import *
 from freegames import path
 
 car = path('car.gif')
-tiles = list(range(32)) * 2
+tiles = list(range(32)) * 2 # lista de números del 0 al 31, 2 veces
 state = {'mark': None}
+# indica si un tile está oculto (True) o revelado (False)
 hide = [True] * 64
 
 def square(x, y):
@@ -29,36 +30,43 @@ def xy(count):
 
 def tap(x, y):
     "Update mark and hidden tiles based on tap."
-    spot = index(x, y)
-    mark = state['mark']
+    spot = index(x, y) # Obtiene el índice del tile que fue clicado
+    mark = state['mark'] # Obtiene el índice del tile actualmente marcado
 
+	# Si no hay un tile marcado o el tile marcado es el mismo que el clicado,
+    	# o los tiles no coinciden, marca el nuevo tile.
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
     else:
-        hide[spot] = False
-        hide[mark] = False
-        state['mark'] = None
+        hide[spot] = False #revela el tile clicado
+        hide[mark] = False #revela el tile previamente marcado
+        state['mark'] = None #reinicia el marcador
 
 def draw():
     "Draw image and tiles."
     clear()
     goto(0, 0)
-    shape(car)
-    stamp()
+    shape(car) #cambia la forma del cursor a la iamgen del carro
+    stamp() #estampa la forma del cursor en la pamtalla
 
+	# Dibuja los tiles
     for count in range(64):
         if hide[count]:
-            x, y = xy(count)
-            square(x, y)
+            x, y = xy(count) #obtiene las coordenadas (x,y) del tile
+            square(x, y) #dibuja el cuadrado para el tile
 
     mark = state['mark']
 
     if mark is not None and hide[mark]:
-        x, y = xy(mark)
+        x, y = xy(mark) # Obtiene las coordenadas del tile marcado
         up()
         goto(x +27, y-3)
         color('black')
+<<<<<<< HEAD
         write(tiles[mark], align="center", font=('Arial', 30, 'normal'))
+=======
+        write(tiles[mark], font=('Arial', 30, 'normal')) #escribe valor tile
+>>>>>>> 6378566 (comentar codigo para documentacion)
 
     update()
     ontimer(draw, 100)
