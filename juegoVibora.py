@@ -5,6 +5,7 @@ from freegames import square, vector
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+speed = 100
 
 # list of available colors
 colors = ["blue", "green", "yellow", "purple", "orange"]
@@ -24,6 +25,7 @@ def inside(head):
 
 def move():
     "Move snake forward one segment."
+    global speed
     head = snake[-1].copy()
     head.move(aim)
 
@@ -37,7 +39,8 @@ def move():
     if head == food:
         print('Snake:', len(snake))
         food.x = randrange(-15, 15) * 10
-        food.y = randrange(-15, 15) * 10
+        food.y = randrange(-15, 15) * 10         
+        speed = max(50, speed - 5)
     else:
         snake.pop(0)
 
@@ -48,7 +51,7 @@ def move():
 
     square(food.x, food.y, 9, food_color)
     update()
-    ontimer(move, 100)
+    ontimer(move, speed)
 
 setup(420, 420, 370, 0)
 hideturtle()
