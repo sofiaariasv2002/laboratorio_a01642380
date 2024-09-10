@@ -10,11 +10,13 @@ def line(start, end):
 
 def square(start, end):
     "Draw square from start to end."
+#Dibuja un cuadrado en el que la longitud de los lados es igual a la diferencia en la coordenada x 
+#entre el punto de inicio (start) y el punto final (end). El cuadrado se dibuja comenzando en el punto de inicio.
     up()
     goto(start.x, start.y)
     down()
     begin_fill()
-   
+
     for count in range(4):
      forward(end.x - start.x)
      left(90)
@@ -22,9 +24,10 @@ def square(start, end):
     end_fill()
 
 def circle(start, end):
-    import math    
-
+    import math
     "Draw circle from start to end."
+#Dibuja un círculo aproximado basado en la distancia entre el punto de inicio (start) y el punto final (end).
+#El radio del círculo se calcula utilizando la distancia euclidiana entre estos puntos.
     up()
     goto(start.x,start.y)
     down()
@@ -35,10 +38,11 @@ def circle(start, end):
      lt(1)
 
     end_fill()
-   # pass  # TODO
 
 def rectangle(start, end):
     "Draw rectangle from start to end."
+#Dibuja un rectángulo con ancho y altura calculados a partir de la diferencia 
+#entre los puntos de inicio y final. La altura tiene un ajuste adicional de 30 unidades.
     up()
     goto(start.x, start.y)
     down()
@@ -54,7 +58,9 @@ def rectangle(start, end):
     end_fill()
 
 def triangle(start, end):
-    "Draw triangle from start to end."
+#Dibuja un triángulo equilátero con lados de longitud igual a la diferencia en la coordenada x
+#entre el punto de inicio (start) y el punto final (end).    
+ "Draw triangle from start to end."
     up()
     goto(start.x, start.y)
     down()
@@ -67,6 +73,8 @@ def triangle(start, end):
     end_fill()
 
 def tap(x, y):
+#Maneja el evento de clic en la pantalla. Dibuja la forma seleccionada desde el punto de inicio
+#hasta el punto final y luego borra el punto de inicio.
     "Store starting point or draw shape."
     start = state['start']
 
