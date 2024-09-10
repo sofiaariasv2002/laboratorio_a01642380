@@ -2,16 +2,17 @@ from random import randrange
 from turtle import *
 from freegames import vector
 
-ball = vector(-200, -200)
-speed = vector(0, 0)
-targets = []
+# Inicialización de variables
+ball = vector(-200, -200) # posicion inicial de la pelota
+speed = vector(0, 0) # Velocidad inicial de la pelota
+targets = [] # Lista para almacenar los objetivos
 
 def tap(x, y):
     "Respond to screen tap."
-    if not inside(ball):
-        ball.x = -199
+    if not inside(ball): # Verifica si la pelota está dentro del área visible
+        ball.x = -199  # Posición inicial de la pelota fuera del área visible
         ball.y = -199
-        speed.x = (x + 200) / 25
+        speed.x = (x + 200) / 25 # Calcula la velocidad en función de la posición del toque
         speed.y = (y + 200) / 25
 
 def inside(xy):
@@ -24,19 +25,21 @@ def draw():
 
 	# Dibuja el marco alrededor de la pantalla
     penup()
-    goto(-210, 210)  # Posición de la esquina superior izquierda del marco
+    goto(-210, 210)
     pendown()
     color('black')
-    width(3)  # Ancho de la línea del marco
+    width(3)
     for _ in range(4):
-        forward(420)  # Dibuja una línea de 420 píxeles
-        right(90)  # Gira 90 grados
+        forward(420)
+        right(90)
     penup()
 
+	# Dibuja los objetivos
     for target in targets:
         goto(target.x, target.y)
         dot(20, 'blue')
 
+	# Dibuja la pelota si está dentro del área visible
     if inside(ball):
         goto(ball.x, ball.y)
         dot(6, 'red')
@@ -45,32 +48,37 @@ def draw():
 
 def move():
     "Move ball and targets."
+	 # Añade un nuevo objetivo aleatorio
     if randrange(40) == 0:
         y = randrange(-150, 150)
         target = vector(200, y)
         targets.append(target)
 
+	# Mueve los objetivos hacia la izquierda
     for target in targets:
         target.x -= 0.5
 
+	 # Mueve la pelota si está dentro del área visible
     if inside(ball):
-        speed.y -= 0.35
-        ball.move(speed)
+        speed.y -= 0.35 # respeta la gravedad
+        ball.move(speed) 
 
-    dupe = targets.copy()
-    targets.clear()
+    dupe = targets.copy() 
+    targets.clear() 
 
+	# añade los objetivos a la lista targets si la distancia entre el objetivo y ball es mayor a 13.
     for target in dupe:
         if abs(target - ball) > 13:
             targets.append(target)
 
-    draw()
+    draw() 
 
+	# Verifica si cada objetivo está dentro de la pantalla. Si algún objetivo no está dentro, la función retorna y detiene la ejecución
     for target in targets:
         if not inside(target):
             return
 
-    ontimer(move, 50)
+    ontimer(move, 50) # 
 
 setup(420, 420, 370, 0)
 hideturtle()
