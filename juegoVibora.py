@@ -5,7 +5,7 @@ from freegames import square, vector
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
-speed = 100
+speed = 80
 
 # list of available colors
 colors = ["blue", "green", "yellow", "purple", "orange"]
@@ -40,7 +40,7 @@ def move():
         print('Snake:', len(snake))
         food.x = randrange(-15, 15) * 10
         food.y = randrange(-15, 15) * 10         
-        speed = max(50, speed - 5)
+        speed = max(30, speed - 5)
     else:
         snake.pop(0)
 
