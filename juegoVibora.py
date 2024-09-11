@@ -5,6 +5,11 @@ from freegames import square, vector
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+<<<<<<< HEAD
+=======
+move_count = 0
+speed = 80
+>>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
 
 # list of available colors
 colors = ["blue", "green", "yellow", "purple", "orange"]
@@ -24,6 +29,11 @@ def inside(head):
 
 def move():
     "Move snake forward one segment."
+<<<<<<< HEAD
+=======
+    global move_count
+    global speed
+>>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
     head = snake[-1].copy()
     head.move(aim)
 
@@ -37,18 +47,40 @@ def move():
     if head == food:
         print('Snake:', len(snake))
         food.x = randrange(-15, 15) * 10
+<<<<<<< HEAD
         food.y = randrange(-15, 15) * 10
+=======
+        food.y = randrange(-15, 15) * 10         
+        speed = max(30, speed - 5)
+>>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
     else:
         snake.pop(0)
 
     clear()
 
+<<<<<<< HEAD
+=======
+    move_count += 1
+    if move_count % 5 == 0: 
+       direction = [vector(10,0),vector(-10,0),vector(0,10),vector(-10,0)]
+       move_direction = choice(direction)
+
+       new_pos = food + move_direction
+
+       if inside(new_pos):
+          food.move(move_direction)
+
+>>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
     for body in snake:
         square(body.x, body.y, 9, snake_color)
 
     square(food.x, food.y, 9, food_color)
     update()
+<<<<<<< HEAD
     ontimer(move, 100)
+=======
+    ontimer(move, speed)
+>>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
 
 setup(420, 420, 370, 0)
 hideturtle()

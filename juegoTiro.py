@@ -12,8 +12,13 @@ def tap(x, y):
     if not inside(ball): # Verifica si la pelota está dentro del área visible
         ball.x = -199  # Posición inicial de la pelota fuera del área visible
         ball.y = -199
+<<<<<<< HEAD
         speed.x = (x + 200) / 25 # Calcula la velocidad en función de la posición del toque
         speed.y = (y + 200) / 25
+=======
+        speed.x = (x + 200) / 10 # Calcula la velocidad en función de la posición del toque
+        speed.y = (y + 200) / 10
+>>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
 
 def inside(xy):
     "Return True if xy within screen."
@@ -49,14 +54,23 @@ def draw():
 def move():
     "Move ball and targets."
 	 # Añade un nuevo objetivo aleatorio
+<<<<<<< HEAD
     if randrange(40) == 0:
+=======
+    if randrange(30) == 0:
+>>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
         y = randrange(-150, 150)
         target = vector(200, y)
         targets.append(target)
 
 	# Mueve los objetivos hacia la izquierda
     for target in targets:
+<<<<<<< HEAD
         target.x -= 0.5
+=======
+        target.x -= 2
+
+>>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
 		# Si un objetivo sale de la pantalla, reposiciónalo en el lado derecho
         if target.x < -200:
             target.x = 200
