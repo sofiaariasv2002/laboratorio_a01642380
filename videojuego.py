@@ -127,7 +127,12 @@ done()
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 >>>>>>> d04326a (Color Nuevo)
+=======
+
+
+>>>>>>> d3b8af1 (New color)
