@@ -43,7 +43,7 @@ def get_tile_color(tile_value):
 def tap(x, y):
     "Update mark and hidden tiles based on tap."
     global taps
-    taps += 1    
+    taps += 1  # Increment counter   
     spot = index(x, y)  # Get the index of the clicked tile
     mark = state['mark']  # Get the index of the currently marked tile   
 
@@ -66,7 +66,7 @@ def draw():
         if hide[count]:
             x, y = xy(count)  # Get (x, y) coordinates of the tile
             square(x, y, 'white')  # Draw the square for the tile
-
+    
     mark = state['mark']
 
     if mark is not None and hide[mark]:
@@ -78,6 +78,11 @@ def draw():
         color('black')  # Color of the text
         write(tiles[mark], align="center", font=('Arial', 20, 'normal'))
     
+    # Detect whe all tiles are revealed
+    if all(not hidden for hidden in hide):
+       color('white')
+       write("Game Over :)", align = "center", font= ('Arial', 40, 'bold'))
+
     up()
     goto(-190, 210)
     write(f'Número de taps: {taps}', font = ('Arial', 16, 'bold'))
