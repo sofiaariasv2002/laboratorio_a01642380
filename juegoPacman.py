@@ -7,13 +7,13 @@ path = Turtle(visible=False)
 writer = Turtle(visible=False)
 aim = vector(5, 0)
 pacman = vector(-40, -80)
-# Define la velocidad de los fantasmas en unidades por actualización
 ghosts = [
-    [vector(-180, 160), vector(10, 0)], 	#mueve x unidades en x
-    [vector(-180, -160), vector(0, 10)], #mueve x unidades en y
-    [vector(100, 160), vector(0, -10)],	#mueve x unidades en -x
-    [vector(100, -160), vector(-10, 0)],	#mueve x unidades en -y
+    [vector(-180, 160), vector(10, 0)],
+    [vector(-180, -160), vector(0, 10)],
+    [vector(100, 160), vector(0, -10)],
+    [vector(100, -160), vector(-10, 0)],
 ]
+
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0,
@@ -36,6 +36,24 @@ tiles = [
     0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ]
+
+# Nueva función para generar un cuadro 4x10 con valores aleatorios
+def generar_cuadro_4x10():
+    return [[choice([0, 1]) for _ in range(10)] for _ in range(4)]
+
+# Nueva función para insertar el cuadro en la lista tiles
+def insertar_cuadro_en_tiles(tiles, cuadro, start_row, start_col, num_columnas):
+    start_index = start_col + start_row * num_columnas #Cálculo del Índice de Inicio
+#Inserción del Cuadro
+    for i in range(4):
+        for j in range(10):
+            tiles[start_index + i * num_columnas + j] = cuadro[i][j]
+
+# Generar el cuadro 4x10
+cuadro = generar_cuadro_4x10()
+
+# Insertar el cuadro en la posición deseada
+insertar_cuadro_en_tiles(tiles, cuadro, 2, 5, 20)
 
 def square(x, y):
     "Draw square using path at (x, y)."
@@ -116,7 +134,7 @@ def move():
         if valid(point + course):
             point.move(course)
         else:
-	#if next position in not valid move to other random side at the same speed
+            # If next position is not valid move to other random side at the same speed
             options = [
                 vector(10, 0),
                 vector(-10, 0),
@@ -124,21 +142,21 @@ def move():
                 vector(0, -10),
             ]
           
-        #Calculate the best move based on the shortest distance to pacman
+            # Calculate the best move based on the shortest distance to pacman
             best_move = None
-            min_dist = float ('inf')
+            min_dist = float('inf')
  
             for option in options:
                 new_point = point + option
                 if valid(new_point):
-                   distance = abs(pacman - new_point)
-                   if distance < min_dist:
-                      min_dist = distance
-                      best_move = option
+                    distance = abs(pacman - new_point)
+                    if distance < min_dist:
+                        min_dist = distance
+                        best_move = option
 
             if best_move:
-               course.x = best_move.x
-               course.y = best_move.y
+                course.x = best_move.x
+                course.y = best_move.y
  
         up()
         goto(point.x + 10, point.y + 10)
@@ -172,3 +190,4 @@ onkey(lambda: change(0, -5), 'Down')
 world()
 move()
 done()
+
