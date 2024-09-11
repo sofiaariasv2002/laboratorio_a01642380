@@ -6,6 +6,7 @@ car = path('car.gif')
 tiles = list(range(32)) * 2  # Lista de números del 0 al 31, 2 veces
 state = {'mark': None}
 hide = [True] * 64
+taps = 0
 
 # Lista de colores
 tile_colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'cyan', 'magenta'] * 4
@@ -41,15 +42,17 @@ def get_tile_color(tile_value):
 
 def tap(x, y):
     "Update mark and hidden tiles based on tap."
+    global taps
+    taps += 1    
     spot = index(x, y)  # Get the index of the clicked tile
-    mark = state['mark']  # Get the index of the currently marked tile
+    mark = state['mark']  # Get the index of the currently marked tile   
 
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
-        state['mark'] = spot
+       state['mark'] = spot
     else:
         hide[spot] = False  # Reveal the clicked tile
         hide[mark] = False  # Reveal the previously marked tile
-        state['mark'] = None  # Reset the mark
+        state['mark'] = None  # Reset the mark 
 
 def draw():
     "Draw image and tiles."
@@ -74,7 +77,11 @@ def draw():
         goto(x + 27, y - 3)
         color('black')  # Color of the text
         write(tiles[mark], align="center", font=('Arial', 20, 'normal'))
-
+    
+    up()
+    goto(-190, 210)
+    write(f'Número de taps: {taps}', font = ('Arial', 16, 'bold'))
+   
     update()
     ontimer(draw, 100)
 
