@@ -101,5 +101,8 @@ onkey(lambda: store('shape', triangle), 't')
 done()
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d04326a (Color Nuevo)
