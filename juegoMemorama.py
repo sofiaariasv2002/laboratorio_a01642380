@@ -1,27 +1,13 @@
-<<<<<<< HEAD
+
 from random import *
-=======
 from random import shuffle
->>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
 from turtle import *
 from freegames import path
 
 car = path('car.gif')
-<<<<<<< HEAD
-tiles = list(range(32)) * 2 # lista de números del 0 al 31, 2 veces
-state = {'mark': None}
-# indica si un tile está oculto (True) o revelado (False)
+tiles = list(range(32)) * 2 # Lista de números del 0 al 31, 2 veces
+state = {'mark': None}  # Indica si un tile está oculto (True) o revelado (False)
 hide = [True] * 64
-
-def square(x, y):
-    "Draw white square with black outline at (x, y)."
-    up()
-    goto(x, y)
-    down()
-    color('black', 'white')
-    begin_fill()
-    for count in range(4):
-=======
 tiles = list(range(32)) * 2  # Lista de números del 0 al 31, 2 veces
 state = {'mark': None}
 hide = [True] * 64
@@ -43,34 +29,11 @@ def square(x, y, tile_color):
     fillcolor(tile_color)  # Use fillcolor to specify the fill color of the square
     begin_fill()
     for _ in range(4):
->>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
         forward(50)
         left(90)
     end_fill()
 
 def index(x, y):
-<<<<<<< HEAD
-    "Convert (x, y) coordinates to tiles index."
-    return int((x + 200) // 50 + ((y + 200) // 50) * 8)
-
-def xy(count):
-    "Convert tiles count to (x, y) coordinates."
-    return (count % 8) * 50 - 200, (count // 8) * 50 - 200
-
-def tap(x, y):
-    "Update mark and hidden tiles based on tap."
-    spot = index(x, y) # Obtiene el índice del tile que fue clicado
-    mark = state['mark'] # Obtiene el índice del tile actualmente marcado
-
-	# Si no hay un tile marcado o el tile marcado es el mismo que el clicado,
-    	# o los tiles no coinciden, marca el nuevo tile.
-    if mark is None or mark == spot or tiles[mark] != tiles[spot]:
-        state['mark'] = spot
-    else:
-        hide[spot] = False #revela el tile clicado
-        hide[mark] = False #revela el tile previamente marcado
-        state['mark'] = None #reinicia el marcador
-=======
     "Convert (x, y) coordinates to tile index."
     return int((x + 200) // 50 + ((y + 200) // 50) * 8)
 
@@ -89,42 +52,19 @@ def tap(x, y):
     spot = index(x, y)  # Get the index of the clicked tile
     mark = state['mark']  # Get the index of the currently marked tile   
 
+ # Si no hay un tile marcado o el tile marcado es el mismo que el clicado,
+ # o los tiles no coinciden, marca el nuevo tile.
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
        state['mark'] = spot
     else:
         hide[spot] = False  # Reveal the clicked tile
         hide[mark] = False  # Reveal the previously marked tile
         state['mark'] = None  # Reset the mark 
->>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
 
 def draw():
     "Draw image and tiles."
     clear()
     goto(0, 0)
-<<<<<<< HEAD
-    shape(car) #cambia la forma del cursor a la iamgen del carro
-    stamp() #estampa la forma del cursor en la pamtalla
-
-	# Dibuja los tiles
-    for count in range(64):
-        if hide[count]:
-            x, y = xy(count) #obtiene las coordenadas (x,y) del tile
-            square(x, y) #dibuja el cuadrado para el tile
-
-    mark = state['mark']
-
-    if mark is not None and hide[mark]:
-        x, y = xy(mark) # Obtiene las coordenadas del tile marcado
-        up()
-        goto(x +27, y-3)
-        color('black')
-<<<<<<< HEAD
-        write(tiles[mark], align="center", font=('Arial', 30, 'normal'))
-=======
-        write(tiles[mark], font=('Arial', 30, 'normal')) #escribe valor tile
->>>>>>> 6378566 (comentar codigo para documentacion)
-
-=======
     shape(car)  # Change the cursor shape to the car image
     stamp()  # Stamp the cursor shape on the screen
 
@@ -154,7 +94,6 @@ def draw():
     goto(-190, 210)
     write(f'Número de taps: {taps}', font = ('Arial', 16, 'bold'))
    
->>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
     update()
     ontimer(draw, 100)
 
@@ -166,8 +105,4 @@ tracer(False)
 onscreenclick(tap)
 draw()
 done()
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
