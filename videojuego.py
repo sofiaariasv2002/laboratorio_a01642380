@@ -10,8 +10,8 @@ def line(start, end):
 
 def square(start, end):
     "Draw square from start to end."
-#Dibuja un cuadrado en el que la longitud de los lados es igual a la diferencia en la coordenada x 
-#entre el punto de inicio (start) y el punto final (end). El cuadrado se dibuja comenzando en el punto de inicio.
+    #Dibuja un cuadrado en el que la longitud de los lados es igual a la diferencia en la coordenada x 
+    #entre el punto de inicio (start) y el punto final (end). El cuadrado se dibuja comenzando en el punto de inicio.
     up()
     goto(start.x, start.y)
     down()
@@ -24,16 +24,11 @@ def square(start, end):
     end_fill()
 
 def circle(start, end):
-<<<<<<< HEAD
-    import math    
-
     "Draw circle from start to end."
-=======
     import math
-    "Draw circle from start to end."
-#Dibuja un círculo aproximado basado en la distancia entre el punto de inicio (start) y el punto final (end).
-#El radio del círculo se calcula utilizando la distancia euclidiana entre estos puntos.
->>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
+ 
+    #Dibuja un círculo aproximado basado en la distancia entre el punto de inicio (start) y el punto final (end).
+    #El radio del círculo se calcula utilizando la distancia euclidiana entre estos puntos.
     up()
     goto(start.x,start.y)
     down()
@@ -44,18 +39,11 @@ def circle(start, end):
      lt(1)
 
     end_fill()
-<<<<<<< HEAD
-   # pass  # TODO
 
 def rectangle(start, end):
     "Draw rectangle from start to end."
-=======
-
-def rectangle(start, end):
-    "Draw rectangle from start to end."
-#Dibuja un rectángulo con ancho y altura calculados a partir de la diferencia 
-#entre los puntos de inicio y final. La altura tiene un ajuste adicional de 30 unidades.
->>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
+    #Dibuja un rectángulo con ancho y altura calculados a partir de la diferencia 
+    #entre los puntos de inicio y final. La altura tiene un ajuste adicional de 30 unidades.
     up()
     goto(start.x, start.y)
     down()
@@ -71,13 +59,10 @@ def rectangle(start, end):
     end_fill()
 
 def triangle(start, end):
-<<<<<<< HEAD
     "Draw triangle from start to end."
-=======
-#Dibuja un triángulo equilátero con lados de longitud igual a la diferencia en la coordenada x
-#entre el punto de inicio (start) y el punto final (end).    
- "Draw triangle from start to end."
->>>>>>> 2dcdef64ee1899808ccfa751532c3a599b52f415
+    #Dibuja un triángulo equilátero con lados de longitud igual a la diferencia en la coordenada x
+    #entre el punto de inicio (start) y el punto final (end).    
+
     up()
     goto(start.x, start.y)
     down()
@@ -124,15 +109,3 @@ onkey(lambda: store('shape', circle), 'c')
 onkey(lambda: store('shape', rectangle), 'r')
 onkey(lambda: store('shape', triangle), 't')
 done()
-
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-
-=======
->>>>>>> d04326a (Color Nuevo)
-=======
-
-
->>>>>>> d3b8af1 (New color)
