@@ -14,7 +14,7 @@ tile_colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'cyan', 'ma
 # Asignar un color a cada número del 0 al 31
 color_map = {}
 for number in set(tiles):
-    color_map[number] = tile_colors[number % len(tile_colors)]
+    color_map[number] = tile_colors[number % len(tile_colors)] #diccionario que asocia cada número de carta con un color de la lista tile_colors.
 
 def square(x, y, tile_color):
     "Draw a square with the given color at (x, y)."
