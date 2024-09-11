@@ -2,6 +2,7 @@ from turtle import *
 from random import randrange, choice
 from freegames import square, vector
 
+# Inicialización de variables
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
@@ -29,6 +30,7 @@ def move():
     head = snake[-1].copy()
     head.move(aim)
 
+    # Termina el juego
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, 'red')
         update()
@@ -36,6 +38,7 @@ def move():
 
     snake.append(head)
 
+    # Si la serpiente alcanza la comida
     if head == food:
         print('Snake:', len(snake))
         food.x = randrange(-15, 15) * 10
@@ -54,10 +57,12 @@ def move():
 
        if inside(new_pos):
           food.move(move_direction)
-
+    
+    # Dibuja la serpiente
     for body in snake:
         square(body.x, body.y, 9, snake_color)
-
+ 
+    # Dibuja la comida
     square(food.x, food.y, 9, food_color)
     update()
     ontimer(move, 100)
